@@ -1,177 +1,108 @@
-/* ===================================================================
-   Tablet e celular (até 900px)
-   =================================================================== */
 @media (max-width: 900px) {
-    html.menu_aberto { overflow: hidden; }
-
-    /* ---- Topo fixo + menu hambúrguer ---- */
-    #cabecalho {
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        z-index: 50;
-        padding: calc(.5rem + env(safe-area-inset-top)) 1rem .5rem;
-        transition: background .3s, box-shadow .3s;
-    }
-    #cabecalho.rolou {
-        background: rgba(10, 1, 0, .92);
-        box-shadow: 0 1px 0 rgba(255, 255, 255, .08);
-    }
-    #juninho { font-size: 1.7rem; position: relative; z-index: 60; }
-    #header_direita { position: relative; z-index: 60; gap: .15rem; }
-    #header_direita a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; }
-    #header_direita .img_link { width: 1.45rem; padding: 0; }
-
-    .menu_btn {
-        display: grid; place-content: center; gap: .4rem;
-        width: 2.75rem; height: 2.75rem;
-        background: none; border: 0; padding: 0; cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-    }
-    .menu_btn span { display: block; width: 1.5rem; height: 2px; background: var(--branco); border-radius: 2px; transition: transform .3s; }
-    .menu_btn.ativo span:nth-child(1) { transform: translateY(.23rem) rotate(45deg); }
-    .menu_btn.ativo span:nth-child(2) { transform: translateY(-.23rem) rotate(-45deg); }
-
     #menu {
-        position: fixed; inset: 0;
-        z-index: 55;
-        flex-direction: column; justify-content: center; align-items: flex-start;
-        gap: .25rem;
-        padding: 5rem 1.5rem 2rem;
-        background:
-            radial-gradient(80% 50% at 90% 10%, rgba(241, 96, 1, .45), transparent 70%),
-            linear-gradient(160deg, #2a0300, #000 80%);
-        font-size: clamp(2.4rem, 12vw, 3.6rem);
-        letter-spacing: -.04em;
-        text-transform: uppercase;
-        opacity: 0; visibility: hidden; transform: translateY(-1rem);
-        transition: opacity .3s, transform .3s, visibility .3s;
-    }
-    #menu.aberto { opacity: 1; visibility: visible; transform: none; }
-    #menu a { opacity: 1; padding: .2rem 0; line-height: 1; }
-    #menu .menu_agendar {
-        display: inline-flex; margin-top: 1.5rem;
-        padding: 1rem 1.5rem; border-radius: 999px;
-        background: var(--branco); color: var(--preto);
-        font-size: .95rem; letter-spacing: .02em; line-height: 1.2;
+        display: none;
     }
 
-    /* ---- Hero ---- */
-    header { overflow: hidden; padding: 0 0 2rem; min-height: 100svh; min-height: 100dvh; }
-    header .moldura { width: calc(100% - 2rem); }
     #baner {
         grid-template-columns: 1fr;
-        grid-template-areas: "titulo" "cartoes";
-        align-content: end;
-        align-items: end;
-        padding-top: 6rem;
-        gap: 1.5rem;
+        grid-template-areas: "rotulo" "titulo" "cartoes";
+        align-items: start;
+        padding-top: 2rem;
     }
-    .rotulo { display: none; }
-    .logo_baner {
-        width: 130vw; max-width: 640px;
-        left: 50%; top: 40%;
-        transform: translate(-50%, -50%);
-        opacity: .6;
+
+    .titulo_baner {
+        text-align: left;
+        max-width: none;
     }
-    .titulo_baner { text-align: left; }
-    #baner h1, #baner h2 { font-size: clamp(3.4rem, 17.5vw, 6.5rem); }
-    .sub_baner { margin: 1.25rem 0 1.5rem; max-width: 26rem; font-size: 1rem; }
-    .titulo_baner .botao { width: 100%; justify-content: center; padding: 1.1rem 1.5rem; font-size: .95rem; }
 
-    .cartoes_baner { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
-    .cartao { min-width: 0; padding: .9rem 1rem; }
-    .cartao strong { font-size: 1.7rem; }
+    .sub_baner {
+        margin-left: 0;
+    }
 
-    /* ---- Seções ---- */
-    .secao_clara { padding: 4.5rem 0 1.5rem; }
-    .chamada { font-size: clamp(2.1rem, 10.5vw, 3.4rem); line-height: .94; }
-    .texto_apoio { font-size: .95rem; margin-top: 1.5rem; padding-inline: .25rem; }
-    .asterisco { position: static; display: block; text-align: center; font-size: 2.4rem; margin-bottom: .75rem; }
-
-    /* Fotos "últimos trabalhos": carrossel por deslize */
     .projetos {
-        display: flex; gap: .75rem;
-        margin: 2.5rem -1rem 0; padding: 0 1rem 1rem;
-        overflow-x: auto; scroll-snap-type: x mandatory;
-        scrollbar-width: none;
+        grid-template-columns: repeat(3, 1fr);
     }
-    .projetos::-webkit-scrollbar { display: none; }
-    .projetos .foto { flex: 0 0 72vw; max-width: 22rem; aspect-ratio: 4 / 5; scroll-snap-align: center; }
 
-    /* Serviços */
-    .carrossel { margin-top: 2rem; padding: 1.5rem 1rem 2rem; gap: .75rem; scroll-padding-inline: 1rem; }
-    .servico { flex-basis: 74vw; max-width: 20rem; aspect-ratio: 4 / 5; }
-    .servico { scroll-snap-align: start; }
-    .servico h3 { font-size: 1.9rem; }
-    .servico p { font-size: .85rem; }
-
-    /* Conheça o Juninho */
-    .conheca { grid-template-columns: 1fr; gap: 2rem; }
-    .conheca_grande { width: 84%; }
-    .conheca_texto .chamada { font-size: clamp(2.1rem, 10.5vw, 3.2rem); }
-    .conheca_texto > p { font-size: 1rem; }
-    .conheca_texto .botao { width: 100%; justify-content: center; padding: 1.1rem 1.5rem; }
-
-    /* Galeria */
-    .mosaico { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 10.5rem; gap: .6rem; margin-top: 2.5rem; }
-    .mosaico .foto:hover { transform: none; }
-
-    .faixa_foto_secao { padding: 2rem 0 1rem; }
-    .faixa_foto { aspect-ratio: 4 / 5; padding: 1.5rem; }
-    .faixa_foto h2 { font-size: clamp(2rem, 10vw, 3rem); }
-
-    /* Preços */
-    #precos { padding-bottom: 4rem; }
-    .tabela_precos { margin-top: 2rem; }
-    .tabela_precos li { padding: 1.1rem 0; font-size: 1.15rem; }
-
-    /* Chamada final */
-    .chamada_final { margin: 0 .5rem .5rem; padding: 4rem 0 4.5rem; }
-    .chamada_final h2 { font-size: clamp(2.6rem, 13vw, 4.2rem); }
-    .chamada_final .botao { width: 100%; justify-content: center; padding: 1.1rem 1.5rem; }
-    .chamada_final p { max-width: none; }
-    .logo_final { width: 95vw; right: -25%; top: 30%; opacity: .4; }
-
-    /* Rodapé */
-    footer { padding: 3rem 0 calc(6rem + env(safe-area-inset-bottom)); }
-    footer .moldura { width: calc(100% - 2rem); }
-    #parte_superior { flex-direction: column; gap: 2rem; }
-    #parte_de_baixo { flex-direction: column-reverse; align-items: flex-start; gap: 1rem; }
-    footer h1 { font-size: 1.5rem; }
-    footer p { font-size: 1rem; line-height: 2; }
-    footer p a { display: inline-block; padding: .15rem 0; }
-    #lado_3 .img_link { width: 1.6rem; }
-
-    /* ---- Botão fixo de WhatsApp ---- */
-    .whats_fixo {
-        position: fixed; z-index: 40;
-        left: 1rem; right: 1rem;
-        bottom: calc(1rem + env(safe-area-inset-bottom));
-        display: flex; align-items: center; justify-content: center; gap: .6rem;
-        padding: 1rem 1.25rem;
-        border-radius: 999px;
-        background: var(--laranja); color: var(--branco);
-        font-weight: 600; font-size: .95rem; text-transform: uppercase; letter-spacing: .04em;
-        box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .45);
-        transition: transform .3s, opacity .3s;
+    .asterisco {
+        position: static;
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
     }
-    .whats_fixo img { width: 1.4rem; height: 1.4rem; filter: brightness(0) invert(1); }
-    .js .whats_fixo:not(.mostrar) { opacity: 0; pointer-events: none; transform: translateY(1rem); }
-    html.menu_aberto .whats_fixo { opacity: 0; pointer-events: none; transform: translateY(1rem); }
 }
 
-/* Tablet: mais respiro */
-@media (min-width: 561px) and (max-width: 900px) {
-    header .moldura, .moldura { width: calc(100% - 4rem); }
-    .whats_fixo { left: auto; right: 1.5rem; width: auto; }
-    .mosaico { grid-auto-rows: 13rem; }
-    .projetos { margin-inline: -2rem; padding-inline: 2rem; }
-    .carrossel { padding-inline: 2rem; }
+@media (max-width: 560px) {
+    .moldura {
+        width: calc(100% - 2rem);
+    }
+
+    header .moldura {
+        width: calc(100% - 2rem);
+    }
+
+    .cartoes_baner {
+        flex-direction: column;
+    }
+
+    .secao_clara {
+        padding-top: 4rem;
+    }
+
+    .projetos {
+        gap: .6rem;
+    }
+
+    .foto {
+        border-radius: 1rem;
+    }
+
+    .chamada_final {
+        margin: 0 .5rem .5rem;
+        padding: 4rem 0;
+    }
+
+    #parte_superior,
+    #parte_de_baixo {
+        flex-direction: column;
+    }
+
+    .tabela_precos li {
+        font-size: 1.05rem;
+    }
 }
 
-/* Celulares pequenos */
-@media (max-width: 360px) {
-    #baner h1, #baner h2 { font-size: 3.2rem; }
-    .cartao strong { font-size: 1.45rem; }
-    .chamada { font-size: 2rem; }
+@media (max-width: 900px) {
+    .conheca {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .mosaico {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 11rem;
+    }
+
+    .logo_baner {
+        width: 110vw;
+        left: -20%;
+        top: 62%;
+        opacity: .5;
+    }
+
+    .faixa_foto {
+        aspect-ratio: 16 / 10;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .mosaico {
+        gap: .6rem;
+        grid-auto-rows: 9rem;
+    }
+
+    .logo_final {
+        width: 90vw;
+        opacity: .35;
+    }
 }
